@@ -19,12 +19,9 @@ private:
 
 class SumExpression : public Expression {
 public:
-   SumExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
+   SumExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override {
-      return _lhs->evaluate() + _rhs->evaluate();
-   }
+   virtual int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -34,12 +31,9 @@ private:
 
 class MinusExpression : public Expression {
 public:
-   MinusExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
+   MinusExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override {
-      return _lhs->evaluate() - _rhs->evaluate();
-   }
+   virtual int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -49,12 +43,9 @@ private:
 
 class TimesExpression : public Expression {
 public:
-   TimesExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
+   TimesExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override {
-      return _lhs->evaluate() * _rhs->evaluate();
-   }
+   virtual int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -64,12 +55,9 @@ private:
 
 class DivideExpression : public Expression {
 public:
-   DivideExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
+   DivideExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override {
-      return _lhs->evaluate() / _rhs->evaluate();
-   }
+   virtual int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -80,9 +68,7 @@ class Number : public Expression {
 public:
    Number(int value) : _value(value) {}
 
-   virtual int evaluate() override {
-      return _value;
-   }
+   virtual int evaluate() override;
 
 private:
    int _value;
