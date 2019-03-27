@@ -17,87 +17,7 @@ using std::vector;
 
 using std::string;
 
-class Expression {
-public:
-   virtual ~Expression() = default;
-
-   virtual int evaluate() = 0;
-//   virtual string print()=0;
-private:
-};
-
-
-class SumExpression : public Expression {
-public:
-   SumExpression(unique_ptr<Expression> lhs, unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
-
-   virtual int evaluate() override {
-      return _lhs->evaluate() + _rhs->evaluate();
-   }
-
-private:
-   unique_ptr<Expression> _lhs;
-   unique_ptr<Expression> _rhs;
-};
-
-
-class MinusExpression : public Expression {
-public:
-   MinusExpression(unique_ptr<Expression> lhs, unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
-
-   virtual int evaluate() override {
-      return _lhs->evaluate() - _rhs->evaluate();
-   }
-
-private:
-   unique_ptr<Expression> _lhs;
-   unique_ptr<Expression> _rhs;
-};
-
-
-class TimesExpression : public Expression {
-public:
-   TimesExpression(unique_ptr<Expression> lhs, unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
-
-   virtual int evaluate() override {
-      return _lhs->evaluate() * _rhs->evaluate();
-   }
-
-private:
-   unique_ptr<Expression> _lhs;
-   unique_ptr<Expression> _rhs;
-};
-
-
-class DivideExpression : public Expression {
-public:
-   DivideExpression(unique_ptr<Expression> lhs, unique_ptr<Expression> rhs)
-         : _lhs(move(lhs)), _rhs(move(rhs)) {}
-
-   virtual int evaluate() override {
-      return _lhs->evaluate() / _rhs->evaluate();
-   }
-
-private:
-   unique_ptr<Expression> _lhs;
-   unique_ptr<Expression> _rhs;
-};
-
-class Number : public Expression {
-public:
-   Number(int value) : _value(value) {}
-
-   virtual int evaluate() override {
-      return _value;
-   }
-
-private:
-   int _value;
-};
-
+#include "Expression.hpp"
 
 class Inventory {
 public:
@@ -147,7 +67,7 @@ void demonstrateExpression();
 
 int main() {
    demonstrateComposite();
-
+   demonstrateExpression();
    return 0;
 }
 
