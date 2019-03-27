@@ -136,7 +136,15 @@ private:
    vector<unique_ptr<Inventory>> _contents;
 };
 
+void demonstrateComposite();
+
 int main() {
+   demonstrateComposite();
+
+   return 0;
+}
+
+void demonstrateComposite() {
    auto sword = make_unique<Item>(5);
    cout << sword->getWeight() << endl;
    auto backpack = make_unique<Bag>();
@@ -144,9 +152,6 @@ int main() {
    backpack->add(make_unique<Item>(13));
    cout << backpack->getWeight() << endl;
    auto backpack2 = make_unique<Bag>();
-   backpack2->add(move(backpack2));
    backpack2->add(make_unique<Item>(12));
    cout << backpack2->getWeight() << endl;
-
-   return 0;
 }
