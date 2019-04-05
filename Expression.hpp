@@ -28,15 +28,11 @@ class BinaryExpression : public Expression {
     std::unique_ptr<Expression> _rhs;
 };
 
-class SumExpression : public Expression {
-public:
-   SumExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
+class SumExpression : public BinaryExpression {
+   public:
+    using BinaryExpression::BinaryExpression;
 
- int evaluate() override;
-
-private:
-   std::unique_ptr<Expression> _lhs;
-   std::unique_ptr<Expression> _rhs;
+    int operateOn(int, int) override;
 };
 
 

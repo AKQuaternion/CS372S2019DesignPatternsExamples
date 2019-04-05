@@ -12,13 +12,6 @@ int MinusExpression::evaluate() {
     return _lhs->evaluate() - _rhs->evaluate();
 }
 
-SumExpression::SumExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs)
-    : _lhs(move(lhs)), _rhs(move(rhs)) {}
-
-int SumExpression::evaluate() {
-    return _lhs->evaluate() + _rhs->evaluate();
-}
-
 TimesExpression::TimesExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs)
     : _lhs(move(lhs)), _rhs(move(rhs)) {}
 
@@ -42,4 +35,9 @@ int BinaryExpression::evaluate() {
 }
 
 BinaryExpression::BinaryExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs)
-    : _lhs(move(lhs)), _rhs(move(rhs)) {}
+    : _lhs(move(lhs)), _rhs(move(rhs)) {
+}
+
+int SumExpression::operateOn(int l, int r) {
+    return l + r;
+}
