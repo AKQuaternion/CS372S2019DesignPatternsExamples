@@ -42,9 +42,9 @@ class Item : public Inventory {
 class Bag : public Inventory {
    public:
     int getWeight() override {
-        return std::accumulate(begin(_contents), end(_contents), 0, [](auto sum, const auto &item) {
-            return sum + item->getWeight();
-        });
+        return std::accumulate(
+            begin(_contents), end(_contents), 0,
+            [](auto sum, const auto &item) { return sum + item->getWeight(); });
         //        auto weight = 0;
         //        for (const auto &c : _contents)
         //            weight += c->getWeight();
@@ -62,7 +62,7 @@ void demonstrateComposite();
 void demonstrateExpression();
 
 int main() {
-    //    demonstrateComposite();
+    demonstrateComposite();
     demonstrateExpression();
     return 0;
 }
