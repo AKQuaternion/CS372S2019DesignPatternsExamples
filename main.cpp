@@ -6,7 +6,7 @@ using std::endl;
 #include <memory>
 using std::unique_ptr;
 using std::move;
-using std::move;
+using std::unique_ptr;
 
 #include <vector>
 
