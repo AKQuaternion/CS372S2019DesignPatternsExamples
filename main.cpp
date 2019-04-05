@@ -4,7 +4,7 @@ using std::cout;
 using std::endl;
 
 #include <memory>
-using std::unique_ptr;
+using std::make_unique;
 using std::move;
 using std::unique_ptr;
 
@@ -13,6 +13,8 @@ using std::unique_ptr;
 using std::vector;
 
 using std::string;
+
+#include <numeric>
 
 #include "Expression.hpp"
 
@@ -40,10 +42,13 @@ class Item : public Inventory {
 class Bag : public Inventory {
    public:
     int getWeight() override {
-        auto weight = 0;
-        for (const auto &c : _contents)
-            weight += c->getWeight();
-        return weight;
+        return std::accumulate(begin(_contents), end(_contents), 0, [](auto sum, const auto &item) {
+            return sum + item->getWeight();
+        });
+        //        auto weight = 0;
+        //        for (const auto &c : _contents)
+        //            weight += c->getWeight();
+        //        return weight;
     }
 
     void add(unique_ptr<Inventory> i) { _contents.push_back(move(i)); }
