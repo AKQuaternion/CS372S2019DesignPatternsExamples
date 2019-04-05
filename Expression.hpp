@@ -35,40 +35,25 @@ class SumExpression : public BinaryExpression {
     int operateOn(int, int) override;
 };
 
+class MinusExpression : public BinaryExpression {
+   public:
+    using BinaryExpression::BinaryExpression;
 
-class MinusExpression : public Expression {
-public:
-   MinusExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
-
- int evaluate() override;
-
-private:
-   std::unique_ptr<Expression> _lhs;
-   std::unique_ptr<Expression> _rhs;
+    int operateOn(int, int) override;
 };
 
+class TimesExpression : public BinaryExpression {
+   public:
+    using BinaryExpression::BinaryExpression;
 
-class TimesExpression : public Expression {
-public:
-   TimesExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
-
- int evaluate() override;
-
-private:
-   std::unique_ptr<Expression> _lhs;
-   std::unique_ptr<Expression> _rhs;
+    int operateOn(int, int) override;
 };
 
+class DivideExpression : public BinaryExpression {
+   public:
+    using BinaryExpression::BinaryExpression;
 
-class DivideExpression : public Expression {
-public:
-   DivideExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
-
- int evaluate() override;
-
-private:
-   std::unique_ptr<Expression> _lhs;
-   std::unique_ptr<Expression> _rhs;
+    int operateOn(int, int) override;
 };
 
 class Number : public Expression {
