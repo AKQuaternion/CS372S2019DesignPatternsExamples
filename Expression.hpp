@@ -17,6 +17,7 @@ private:
 };
 
 class BinaryExpression : public Expression {
+   public:
     BinaryExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
     int evaluate() override;
