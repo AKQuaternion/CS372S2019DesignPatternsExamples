@@ -16,12 +16,22 @@ public:
 private:
 };
 
+class BinaryExpression : public Expression {
+    BinaryExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
+
+    int evaluate() override;
+    virtual int operateOn(int, int) = 0;
+
+   private:
+    std::unique_ptr<Expression> _lhs;
+    std::unique_ptr<Expression> _rhs;
+};
 
 class SumExpression : public Expression {
 public:
    SumExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override;
+ int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -33,7 +43,7 @@ class MinusExpression : public Expression {
 public:
    MinusExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override;
+ int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -45,7 +55,7 @@ class TimesExpression : public Expression {
 public:
    TimesExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override;
+ int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -57,7 +67,7 @@ class DivideExpression : public Expression {
 public:
    DivideExpression(std::unique_ptr<Expression> lhs, std::unique_ptr<Expression> rhs);
 
-   virtual int evaluate() override;
+ int evaluate() override;
 
 private:
    std::unique_ptr<Expression> _lhs;
@@ -66,11 +76,11 @@ private:
 
 class Number : public Expression {
 public:
-   Number(int value) : _value(value) {}
+    explicit Number(int value) : _value(value) {}
 
-   virtual int evaluate() override;
+    int evaluate() override;
 
-private:
+   private:
    int _value;
 };
 
