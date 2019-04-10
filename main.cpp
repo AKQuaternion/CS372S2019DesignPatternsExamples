@@ -87,4 +87,5 @@ void demonstrateExpression() {
     auto five = make_unique<Number>(5);
     TimesExpression e(move(twoPlusThree), move(five));
     std::cout << e.evaluate() << std::endl;
+    e.display();
 }
