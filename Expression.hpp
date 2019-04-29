@@ -39,7 +39,7 @@ class SumExpression : public BinaryExpression {
    public:
     using BinaryExpression::BinaryExpression;
 
-    int operateOn(int, int) override;
+    int operateOn(int /*unused*/, int /*unused*/) override;
     char symbol() override;
 };
 
@@ -47,7 +47,7 @@ class MinusExpression : public BinaryExpression {
    public:
     using BinaryExpression::BinaryExpression;
 
-    int operateOn(int, int) override;
+    int operateOn(int /*unused*/, int /*unused*/) override;
     char symbol() override;
 };
 
@@ -55,7 +55,7 @@ class TimesExpression : public BinaryExpression {
    public:
     using BinaryExpression::BinaryExpression;
 
-    int operateOn(int, int) override;
+    int operateOn(int /*unused*/, int /*unused*/) override;
     char symbol() override;
 };
 
@@ -63,7 +63,7 @@ class DivideExpression : public BinaryExpression {
    public:
     using BinaryExpression::BinaryExpression;
 
-    int operateOn(int, int) override;
+    int operateOn(int /*unused*/, int /*unused*/) override;
     char symbol() override;
 };
 
